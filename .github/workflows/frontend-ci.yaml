@@ -91,9 +91,5 @@ jobs:
         working-directory: starter/frontend
         run: npm test -- --watchAll=false
 
-      - name: Build Docker image
-        run: |
-          docker build \
-            --build-arg REACT_APP_MOVIE_API_URL="${{ env.REACT_APP_MOVIE_API_URL }}" \
-            --tag mp-frontend:latest \
-            .
+      - - name: Build Docker image
+          run: docker build --tag mp-frontend:latest -f starter/frontend/Dockerfile starter/frontend
